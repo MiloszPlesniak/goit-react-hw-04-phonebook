@@ -1,6 +1,7 @@
 import ListElement from 'components/ListElement/ListElement';
 import SearchFilter from 'components/SearchFilter/SearchFilter';
 import PropTypes from 'prop-types';
+
 const ContactList = ({
   title,
   contacts,
