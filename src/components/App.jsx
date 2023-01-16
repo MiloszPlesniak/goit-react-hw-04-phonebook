@@ -40,9 +40,7 @@ export const App = () => {
 
   const deleteContact = event => {
     const value = event.target.parentNode.firstChild.textContent;
-    this.setState({
-      contacts: contacts.filter(item => item.name !== value),
-    });
+    setContacts(contacts.filter(item => item.name !== value));
   };
 
   const checkAddContact = (contacts, newContact) => {
