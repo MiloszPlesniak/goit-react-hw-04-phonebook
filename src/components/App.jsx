@@ -3,22 +3,15 @@ import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import ContactList from 'components/ContactList/ContactList';
 import AddingContacts from 'components/AddingContacts/AddingContacts';
-import { load } from 'service/LocalStorageService';
-import { save } from 'service/LocalStorageService';
+import { getFromStorage } from 'service/localStorageService';
+import { saveToStorage } from 'service/localStorageService';
 
 export const App = () => {
-  // state = {
-  //   contacts: [],
-  //   filter: '',
-  // };
-
-  const [contacts, setContacts] = useState(() => {
-    return load('contacts') !== null ? load('contacts') : [];
-  });
+  const [contacts, setContacts] = useState(getFromStorage('contacts'));
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    save('contacts', contacts);
+    saveToStorage('contacts', contacts);
   }, [contacts]);
 
   const addContact = event => {
@@ -33,7 +26,7 @@ export const App = () => {
     checkAddContact(contacts, contact)
       ? Notify.failure(info)
       : setContacts([...contacts, contact]);
-    save('contacts', contacts);
+    saveToStorage('contacts', contacts);
 
     event.target.reset();
   };
