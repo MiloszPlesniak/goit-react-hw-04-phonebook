@@ -3,8 +3,8 @@ import { nanoid } from 'nanoid';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import ContactList from 'components/ContactList/ContactList';
 import AddingContacts from 'components/AddingContacts/AddingContacts';
-import { getFromStorage } from 'service/d';
-import { saveToStorage } from 'service/d';
+import { getFromStorage } from 'service/localStorageServic';
+import { saveToStorage } from 'service/localStorageServic';
 
 export const App = () => {
   const [contacts, setContacts] = useState(getFromStorage('contacts'));
